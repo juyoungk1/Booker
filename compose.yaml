@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8.0
+    container_name: bookers-db
+    environment:
+      - MYSQL_DATABASE=bookers
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - TZ=Asia/Seoul
+    ports:
+      - "3308:3306"
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
