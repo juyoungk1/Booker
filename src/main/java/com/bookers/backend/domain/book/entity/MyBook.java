@@ -29,21 +29,40 @@ public class MyBook extends BaseTimeEntity {
 
     private Integer rating; // 별점 (0~5), 나중에 사용
 
+    //분야 (철학, 경제/경영, 소설 등)
+    @Enumerated(EnumType.STRING)
+    private BookGenre genre;
+
+    //공개 범위(전체공개, 친구공개, 비공개)
+    @Enumerated(EnumType.STRING)
+    private Visibility visibility;
+
+    //한 줄 메모
+    @Column(columnDefinition = "TEXT")
+    private String memo;
+
     @Builder
-    public MyBook(User user, Book book, BookStatus status) {
+    public MyBook(User user, Book book, BookStatus status, BookGenre genre, Visibility visibility, String memo) {
         this.user = user;
         this.book = book;
         this.status = status;
+        this.genre = genre;
+        this.visibility = visibility == null ? Visibility.PRIVATE : visibility; // 기본값 처리
+        this.memo = memo;
     }
 
     // [추가] 상태 및 별점 수정
-    public void update(BookStatus status, Integer rating) {
+    public void update(BookStatus status, Integer rating, String memo, Visibility visibility) {
         this.status = status;
         this.rating = rating;
+        this.memo = memo;
+        this.visibility = visibility;
     }
 
     // [추가] 소유자 확인 메서드
     public boolean isOwner(Long userId) {
         return this.user.getId().equals(userId);
     }
+
+
 }

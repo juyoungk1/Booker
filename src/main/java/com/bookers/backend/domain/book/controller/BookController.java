@@ -1,14 +1,11 @@
 package com.bookers.backend.domain.book.controller;
 
-import com.bookers.backend.domain.book.dto.AladinSearchResponse;
-import com.bookers.backend.domain.book.dto.MyBookResponse;
-import com.bookers.backend.domain.book.dto.MyBookUpdateRequest;
+import com.bookers.backend.domain.book.dto.*;
 import com.bookers.backend.domain.book.service.BookSearchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.bookers.backend.domain.book.dto.BookSaveRequest;
 import com.bookers.backend.domain.book.service.BookService;
 import org.springframework.security.core.Authentication;
 import jakarta.validation.Valid;
@@ -71,4 +68,13 @@ public class BookController {
         bookService.deleteMyBook(myBookId, email);
         return ResponseEntity.ok("서재에서 도서를 삭제했습니다.");
     }
+
+    // [신규] 내 서재 통계 (분야별 권수 & 퍼센트)
+    @GetMapping("/shelf/stats")
+    public ResponseEntity<List<ShelfStatDto>> getMyShelfStats(Authentication authentication) {
+        return ResponseEntity.ok(bookService.getMyShelfStats(authentication.getName()));
+    }
+
+
+
 }
