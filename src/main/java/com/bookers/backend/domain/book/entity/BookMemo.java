@@ -15,7 +15,7 @@ public class BookMemo extends BaseTimeEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // 어떤 책에 꽂힌 메모인지 (내 서재의 책과 연결)
+    // (내 서재의 책과 연결)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "my_book_id")
     private MyBook myBook;
