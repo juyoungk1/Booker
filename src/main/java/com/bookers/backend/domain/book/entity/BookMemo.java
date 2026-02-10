@@ -15,26 +15,26 @@ public class BookMemo extends BaseTimeEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // (내 서재의 책과 연결)
+    // 어떤 책에 꽂힌 메모인지 (부모 책)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "my_book_id")
     private MyBook myBook;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
-    private String content; // 메모 내용 (명언, 생각 등)
+    @Column(columnDefinition = "TEXT", nullable = false)
+    private String content; // 메모 내용
 
-    private Integer pageNumber; // (선택) 몇 페이지 읽고 쓴 건지?
+    private Integer page; // 몇 페이지인지 (선택 사항)
 
     @Builder
-    public BookMemo(MyBook myBook, String content, Integer pageNumber) {
+    public BookMemo(MyBook myBook, String content, Integer page) {
         this.myBook = myBook;
         this.content = content;
-        this.pageNumber = pageNumber;
+        this.page = page;
     }
 
-    // 메모 수정 기능
-    public void update(String content, Integer pageNumber) {
+    // 수정 메서드
+    public void update(String content, Integer page) {
         this.content = content;
-        this.pageNumber = pageNumber;
+        this.page = page;
     }
 }
