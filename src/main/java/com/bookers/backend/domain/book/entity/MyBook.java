@@ -41,6 +41,8 @@ public class MyBook extends BaseTimeEntity {
     @Column(columnDefinition = "TEXT")
     private String memo;
 
+    //독서진도율 추후 추가
+
     @Builder
     public MyBook(User user, Book book, BookStatus status, BookGenre genre, Visibility visibility, String memo) {
         this.user = user;
