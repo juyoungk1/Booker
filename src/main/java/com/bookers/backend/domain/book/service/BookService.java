@@ -55,7 +55,9 @@ public class BookService {
                 .status(request.status())
                 .genre(request.genre())         // [추가] 분야
                 .visibility(request.visibility()) // [추가] 공개 범위
-                .memo(request.memo())           // [추가] 메모
+                .memo(request.memo())   // [추가] 메모
+                .totalPage(request.totalPage())// [추가] 요청에서 받은 페이지 수 저장
+                .currentPage(request.currentPage())
                 .build();
 
         return myBookRepository.save(myBook).getId();
@@ -87,7 +89,7 @@ public class BookService {
 
         // [변경] 기존 update 메서드 대신, 새로운 필드들도 업데이트
         // (MyBook 엔티티에 update 메서드를 수정해야 함 - 아래 설명 참조)
-        myBook.update(request.status(), request.rating(), request.memo(), request.visibility());
+        myBook.update(request.status(), request.rating(), request.memo(), request.visibility(), request.totalPage(), request.currentPage());
     }
 
     // 4. 내 서재에서 책 삭제 (기존 동일)

@@ -18,6 +18,9 @@ public record BookSaveRequest(
         Visibility visibility,
         String memo,
 
+        Integer totalPage,
+        Integer currentPage,
+
         @NotNull(message = "독서 상태를 선택해주세요")
         BookStatus status
 ) {}

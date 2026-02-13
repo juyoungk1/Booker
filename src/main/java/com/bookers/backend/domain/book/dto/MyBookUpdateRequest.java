@@ -12,5 +12,8 @@ public record MyBookUpdateRequest(
 
         // 👇 추가된 필드들 (이미 잘 넣으셨습니다!)
         String memo,
-        Visibility visibility
+        Visibility visibility,
+
+        Integer totalPage,
+        Integer currentPage
 ) {}

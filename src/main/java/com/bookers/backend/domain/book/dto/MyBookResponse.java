@@ -22,6 +22,9 @@ public record MyBookResponse(
         Visibility visibility,
         String memo,
 
+        Integer totalPage,
+        Integer currentPage,
+
         LocalDateTime createdAt // 담은 날짜
 ) {
     // Entity -> DTO 변환 메서드
@@ -40,6 +43,9 @@ public record MyBookResponse(
                 myBook.getGenre(),
                 myBook.getVisibility(),
                 myBook.getMemo(),
+
+                myBook.getTotalPage(),
+                myBook.getCurrentPage(),
 
                 myBook.getCreatedAt()
         );

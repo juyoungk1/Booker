@@ -42,23 +42,32 @@ public class MyBook extends BaseTimeEntity {
     private String memo;
 
     //독서진도율 추후 추가
+    @Column(name = "total_page")
+    private Integer totalPage; //총페이지
+
+    @Column(name = "current_page")
+    private Integer currentPage; //내가 읽는 페이지
 
     @Builder
-    public MyBook(User user, Book book, BookStatus status, BookGenre genre, Visibility visibility, String memo) {
+    public MyBook(User user, Book book, BookStatus status, BookGenre genre, Visibility visibility, String memo, Integer totalPage, Integer currentPage) {
         this.user = user;
         this.book = book;
         this.status = status;
         this.genre = genre;
         this.visibility = visibility == null ? Visibility.PRIVATE : visibility; // 기본값 처리
         this.memo = memo;
+        this.totalPage = totalPage;
+        this.currentPage = currentPage == null ? 0 : currentPage; //null이면 0페이지부터 시작
     }
 
     // [추가] 상태 및 별점 수정
-    public void update(BookStatus status, Integer rating, String memo, Visibility visibility) {
+    public void update(BookStatus status, Integer rating, String memo, Visibility visibility,  Integer totalPage, Integer currentPage) {
         this.status = status;
         this.rating = rating;
         this.memo = memo;
         this.visibility = visibility;
+        this.totalPage = totalPage;
+        this.currentPage = currentPage;
     }
 
     // [추가] 소유자 확인 메서드
