@@ -1,7 +1,5 @@
 # 📚 Bookers (북커스) - 나만의 서재 & 독서 커뮤니티 앱
 
-![App Screenshot Placeholder](https://via.placeholder.com/800x400?text=Bookers+App+Mockup)
-
 > **"당신의 독서 여정을 기록하고, 함께 나누세요."**
 > Bookers는 개인의 독서 진행률을 한눈에 파악하고, 책 속에 꽂아두는 책갈피처럼 메모를 남기며, 다른 사람들과 독서 경험을 공유할 수 있는 모바일 애플리케이션입니다.
 
@@ -27,8 +25,6 @@ Bookers는 알라딘 Open API를 활용하여 손쉽게 책을 검색하고 내 
 ### 4. 🔒 안전한 인증 (Authentication)
 * JWT(JSON Web Token)를 활용한 안전한 로그인 및 API 인가(Authorization)를 구현했습니다.
 
----
-
 ## 🛠 기술 스택 (Tech Stack)
 
 ### Frontend
@@ -38,37 +34,19 @@ Bookers는 알라딘 Open API를 활용하여 손쉽게 책을 검색하고 내 
 
 ### Backend
 * **Framework:** Spring Boot 3.x, Java
-* **Database & ORM:** Spring Data JPA, MySQL (또는 사용하신 DB 명시)
+* **Database & ORM:** Spring Data JPA, MySQL
 * **Security:** Spring Security, JWT (JSON Web Token)
 * **External API 통신:** Spring `RestClient` (알라딘 Open API 연동)
 
 ### API & Data
 * **Aladin Open API:** 도서 검색 및 상세 정보(페이지 수 등) 조회
 
----
-
 ## ⚙️ 아키텍처 및 핵심 구현 로직
-
 * **RESTful API 설계:** 프론트엔드와 백엔드의 완벽한 분리로 확장이 용이한 구조를 채택했습니다.
 * **외부 API 데이터 가공:** 알라딘 API의 복잡한 JSON 응답(`subInfo` 내의 `itemPage` 등)을 백엔드에서 DTO 레코드로 깔끔하게 역직렬화하여 프론트엔드에 최적화된 형태로 전달합니다.
 * **JWT 기반 상태 관리:** 프론트엔드 최상단(`App.js`)에서 토큰을 관리하고, 서재와 커뮤니티 컴포넌트로 상태를 주입하여 끊김 없는 사용자 경험을 제공합니다.
 
----
-
-## 🚀 실행 방법 (Getting Started)
-
-### Backend Setup
-1. `src/main/resources/application.yml` 파일에 알라딘 TTB 키 및 DB 정보를 설정합니다.
-2. Spring Boot 애플리케이션을 실행합니다. (기본 포트: `8080`)
-
-### Frontend Setup
-1. 프로젝트 폴더로 이동하여 패키지를 설치합니다.
-   npm install
-   a
-
-
 ## 🚀 추후 업데이트 예정 (Roadmap)
-
 Bookers는 사용자의 지속적인 독서 습관 형성을 돕기 위해 다음과 같은 흥미로운 기능을 준비하고 있습니다.
 
 ### 🏔️ 내가 쌓은 책의 높이는? (게이미피케이션 요소를 더한 마이페이지)
@@ -76,3 +54,14 @@ Bookers는 사용자의 지속적인 독서 습관 형성을 돕기 위해 다�
 * **독서 탑 쌓기 (Visual Achievement):** 사용자가 지금까지 '완독'한 책들의 두께를 모두 더해 총 누적 높이를 계산합니다.
 * **랜드마크 도장 깨기:** 누적된 책의 높이가 특정 수치에 도달할 때마다, 마이페이지에서 그 높이와 유사한 세계의 유명 건축물(예: 에펠탑, 엠파이어 스테이트 빌딩)이나 위대한 자연물(예: 한라산, 에베레스트산)의 타이틀을 획득하게 됩니다.
 * **기획 의도:** 단순히 '몇 권 읽었다'는 숫자를 넘어, 내가 읽은 지식의 양을 눈에 보이는 거대한 스케일로 비유해 줌으로써 사용자에게 압도적인 성취감과 지속적인 독서 동기를 부여하고자 합니다.
+
+## 🏃‍♂️ 실행 방법 (Getting Started)
+
+### Backend Setup
+1. `src/main/resources/application.yml` 파일에 알라딘 TTB 키 및 DB 정보를 설정합니다.
+2. Spring Boot 애플리케이션을 실행합니다. (기본 포트: `8080`)
+
+### Frontend Setup
+1. 프로젝트 폴더로 이동하여 패키지를 설치합니다.
+   ```bash
+   npm install
